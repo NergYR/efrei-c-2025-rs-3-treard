@@ -1,0 +1,25 @@
+:hardbreaks:
+:experimental:
+= Cours de C
+
+== Objectif du cours
+=== Objectifs principaux
+Maitriser le C
+
+=== Objectifs secondaires
+Utiliser Git
+Gestion de la mémoire dynamique
+Les étapes de compilation
+Objectifs RS : Ouverture sur la sécurité
+
+== Découpage des séances
+
+. Environnement + Bases du C : type et conditions
+. Git + Gitlab
+. Histoire du C + Compilation + boucles + programmation modulaire
+. Pointeurs
+. Structures de données
+. Gestion de la mémoire avancée + récursivité
+
+== Objectifs operationels
+Déclinaison pratique des objectifs, ce sont les compétences que vous devez acquérir après chaque séance.
