@@ -1,0 +1,16 @@
+#pragma once
+
+void scopeExample();
+void multiplyByTwo(int a);
+
+// Affichez le contenu d'une variable et son adresse
+void showAddress(int a);
+
+// Affichez le contenu d'une variable et son adresse
+void showAddress2(int *a);
+
+// Échanger le contenu de variables a et b
+void swap(int *a, int *b);
+
+// Écrire une fonction de type void qui double la valeur d'un int
+void doubleInt(int *a);

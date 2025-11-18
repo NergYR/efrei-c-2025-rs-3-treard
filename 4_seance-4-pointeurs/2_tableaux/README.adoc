@@ -1,0 +1,13 @@
+= Exercice : Manipulation de Tableaux
+
+À partir des définitions présentes dans main.h :
+
+. Écrire une fonction qui initialise un tableau de 10 éléments. Le premier élément prend la valeur `start`, chaque élément est égale au précédent +1. Affichez le tableau puis la somme des éléments du tableau :
+`void createAndPrint(int start);`
+
+. Écrire une fonction qui recherche dans un tableau passé en paramètre si une valeur existe :
+`bool exitInTab(int *tab, int size, int a);`
+
+. Sans créer de tableau supplémentaire, inversez les éléments d'un tableau puis affichez les `void invertTabElements(int *tab);`
+
+. Implémentez un tri par insertion. La fonction reçoit un pointeur sur un tableau et le trie. Regardez comment fonctionne un tri par insertion : https://fr.wikipedia.org/wiki/Tri_par_insertion#/media/Fichier:Insertion-sort-example-300px.gif[exemple] (mais ne regardez pas le pseudo code dans un premier temps). `void insertionSort(int *tab, int size);`
