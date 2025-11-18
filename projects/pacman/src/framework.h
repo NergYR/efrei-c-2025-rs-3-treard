@@ -83,12 +83,12 @@ void drawSpriteAlpha(SDL_Texture * texture, int x, int y, int w, int h, float an
 // Affichage du fond d'un niveau
 // --------
 // * level : le niveau sous forme d'un tableau de char
-// * row, col : nombre de ligne et de colonne
+// * row, col : nombre de lignes et de colonnes
 void drawLevel(char*** level, int row, int col, RendererParameters *params, Textures *textures);
 
 // Création d'une texture de sprite
 // --------
-// * imgName : nom du fichier de l'image (format BMP avec alpha)
+// * imageName : nom du fichier de l'image (format BMP avec alpha)
 SDL_Texture * GetTexture(char* imageName, RendererParameters *params);
 
 #endif //FRAMEWORK_H

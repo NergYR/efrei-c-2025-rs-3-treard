@@ -190,12 +190,14 @@ void drawLevel(char*** level, int row, int col, RendererParameters *params, Text
 
 // Création d'une texture de sprite
 // --------
-// * imgName : nom du fichier de l'image (format BMP avec alpha)
+// * imageName : nom du fichier de l'image (format BMP avec alpha)
 SDL_Texture * GetTexture(char* imageName, RendererParameters *params)
 {
     char imagePath[80];
 
-    strcpy(imagePath, "resources\\images");
+    strcpy(imagePath, "resources");
+    strcat(imagePath, pathSeparator);
+    strcat(imagePath,   "images");
     strcat(imagePath, pathSeparator);
     strcat(imagePath, imageName);
     SDL_Surface * sprite = SDL_LoadBMP(imagePath);
