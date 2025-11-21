@@ -14,9 +14,25 @@ int gameLoop(void)
     // Initialisation du framework
     initWindowed(&params, &textures);
 
-    // Position initiale de Pacman au centre de l'écran
+    // Charger le premier niveau
+    char **level = loadFirstLevel();
+
+    // Trouver la position initiale de Pacman (caractère 'O' dans le niveau)
     int pacmanX = WIDTH / 2;
     int pacmanY = HEIGHT / 2;
+    for (int i = 0; i < HEIGHT; i++)
+    {
+        for (int j = 0; j < WIDTH; j++)
+        {
+            if (level[i][j] == 'O')
+            {
+                pacmanX = j;
+                pacmanY = i;
+                level[i][j] = '.'; // Remplacer par un point
+            }
+        }
+    }
+    
     float pacmanAngle = 0.0f;
 
     // Boucle de jeu
@@ -32,47 +48,58 @@ int gameLoop(void)
             running = 0;
         }
         
-        // Gérer les déplacements avec les touches directionnelles
+        // Calculer la nouvelle position en fonction de l'entrée
+        int newX = pacmanX;
+        int newY = pacmanY;
+        
         if (input == SDLK_UP || input == SDLK_W)
         {
-            pacmanY--;
+            newY--;
             pacmanAngle = 90.0f; // Nord (haut)
         }
         else if (input == SDLK_DOWN || input == SDLK_S)
         {
-            pacmanY++;
+            newY++;
             pacmanAngle = 270.0f; // Sud (bas)
         }
         else if (input == SDLK_LEFT || input == SDLK_A)
         {
-            pacmanX--;
+            newX--;
             pacmanAngle = 0.0f; // Ouest (gauche)
         }
         else if (input == SDLK_RIGHT || input == SDLK_D)
         {
-            pacmanX++;
+            newX++;
             pacmanAngle = 180.0f; // Est (droite)
         }
         
-        // Limiter Pacman aux bordures de l'écran
-        if (pacmanX < 0) pacmanX = 0;
-        if (pacmanX >= WIDTH) pacmanX = WIDTH - 1;
-        if (pacmanY < 0) pacmanY = 0;
-        if (pacmanY >= HEIGHT) pacmanY = HEIGHT - 1;
+        // Vérifier les collisions avec les murs et les bordures
+        if (newX >= 0 && newX < WIDTH && newY >= 0 && newY < HEIGHT)
+        {
+            // Si la case n'est pas un mur ('H'), on peut se déplacer
+            if (level[newY][newX] != 'H')
+            {
+                pacmanX = newX;
+                pacmanY = newY;
+            }
+        }
         
-        // Effacer l'écran
-        SDL_SetRenderDrawColor(params.renderer, 0, 0, 0, 255);
-        SDL_RenderClear(params.renderer);
+        // Afficher le niveau
+        drawLevel(level, &params, &textures);
         
         // Afficher Pacman
         drawSpriteOnGrid(textures.texturePacman, pacmanX, pacmanY, pacmanAngle, &params);
         
-        // Présenter le rendu
-        SDL_RenderPresent(params.renderer);
-        
-        // Mettre à jour l'affichage (gestion du framerate)
+        // Mettre à jour l'affichage (gestion du framerate + présentation)
         update(&params);
     }
+
+    // Libérer la mémoire du niveau
+    for (int i = 0; i < HEIGHT; i++)
+    {
+        free(level[i]);
+    }
+    free(level);
 
     return 0;
 }
