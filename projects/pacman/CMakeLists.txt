@@ -78,8 +78,14 @@ if (USE_SYSTEM_CMOCKA)
     find_package(CMocka QUIET)
 endif()
 
-if (TARGET CMocka::CMocka OR CMocka_FOUND)
+if (CMocka_FOUND)
     message(STATUS "Using system CMocka")
+    # Create the imported target if it doesn't exist
+    if (NOT TARGET CMocka::CMocka)
+        add_library(CMocka::CMocka INTERFACE IMPORTED)
+        target_link_libraries(CMocka::CMocka INTERFACE ${CMOCKA_LIBRARIES})
+        target_include_directories(CMocka::CMocka INTERFACE ${CMOCKA_INCLUDE_DIR})
+    endif()
 elseif (EXISTS "${CMAKE_SOURCE_DIR}/libs/cmocka")
     message(STATUS "Using bundled CMocka at ${CMAKE_SOURCE_DIR}/libs/cmocka")
     # Build a static library from the bundled CMocka source
