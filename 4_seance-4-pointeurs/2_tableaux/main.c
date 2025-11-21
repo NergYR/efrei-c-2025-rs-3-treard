@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "main.h"
 
-int main(void)
+void exemple ()
 {
     // Initialiser un tableau
     int tab[3];
@@ -76,6 +76,9 @@ int main(void)
     invertTabElements(tab, 5);
 
 
+    printTab(tab, 5);
+    insertionSort(tab, 5);
+    printTab(tab, 5);
 
 
     return 0;
@@ -135,6 +138,32 @@ void invertTabElements(int *tab, int size)
     // Affichage du tableau inverse
     printf("Tableau inverse : ");
     for (int i = 0; i < size; i++) {
+        printf("%d ", tab[i]);
+    }
+    printf("\n");
+}
+
+void insertionSort(int *tab, int size)
+{
+    // Pour tous les elements du tableau
+    for (int i = 1; i < size; i++) {
+
+        int element = tab[i];
+        int j = i - 1;
+
+        // Tant l'element est plus petit que le precedent,
+        while (j >= 0 && tab[j] > element) {
+            tab[j + 1] = tab[j];
+            j--;
+        }
+        tab[j + 1] = element;
+    }
+}
+
+void printTab(int *tab, int size)
+{
+    for (int i = 0; i < size; i++)
+    {
         printf("%d ", tab[i]);
     }
     printf("\n");
