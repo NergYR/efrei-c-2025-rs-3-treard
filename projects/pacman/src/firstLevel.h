@@ -1,9 +1,5 @@
-#ifndef FIRSTLEVEL_H
-#define FIRSTLEVEL_H
-#include <string.h>
-#include <stdlib.h>
+#pragma once
 
-void loadFirstLevel(char *** tab);
+// Chargement du premier niveau sous forme d'un tableau
+char ** loadFirstLevel();
 
-
-#endif //FIRSTLEVEL_H

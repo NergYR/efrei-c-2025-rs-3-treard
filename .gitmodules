@@ -1,0 +1,6 @@
+[submodule "projects/pacman/libs/SDL"]
+	path = projects/pacman/libs/SDL
+	url = https://github.com/libsdl-org/SDL.git
+[submodule "projects/pacman/libs/cmocka"]
+	path = projects/pacman/libs/cmocka
+	url = https://github.com/clibs/cmocka.git

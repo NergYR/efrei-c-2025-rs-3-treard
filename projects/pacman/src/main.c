@@ -1,18 +1,28 @@
 #include "main.h"
+#include "firstLevel.h"
+#include "framework.h"
+#include <SDL3/SDL.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 
-int main(int argc, char* argv[])
+int gameLoop(void)
 {
+    RendererParameters params;
+    Textures textures;
 
-    RendererParameters * params = malloc(sizeof(RendererParameters));
-    Textures * textures = malloc(sizeof(Textures));
-    init(params, textures, 500, 500, 60);
+    // Initialisation du framework
+    initWindowed(&params, &textures);
 
     SDL_Delay(4000);
-
 
     return 0;
 }
 
-
-
+#ifndef PACMAN_TESTS
+int main(void)
+{
+    gameLoop();
+    return 0;
+}
+#endif
