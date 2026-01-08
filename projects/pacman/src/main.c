@@ -14,6 +14,9 @@ int gameLoop(void)
     // Initialisation du framework
     initWindowed(&params, &textures);
 
+    // Utile pour plus tard, mais nécessaire pour MacOs
+    getInput();
+
     SDL_Delay(4000);
 
     return 0;

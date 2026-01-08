@@ -10,6 +10,11 @@ Pour les distributions basées sur Red Hat (comme Fedora), utilisez la commande 
 sudo dnf install SDL3-devel SDL3_image-devel SDL3_mixer-devel
 ```
 
+MacOs
+```bash
+brew install sdl3
+```
+
 == CMocka
 
 Debian / Ubuntu
@@ -17,7 +22,18 @@ Debian / Ubuntu
 sudo apt-get install libcmocka-dev
 ```
 
-Red Hat / Fedora
+Red Hat
 ```bash
 sudo dnf install cmocka-devel
+```
+
+
+Fedora
+```bash
+sudo dnf install libcmocka-devel
+```
+
+MacOs
+```bash
+brew install cmocka
 ```

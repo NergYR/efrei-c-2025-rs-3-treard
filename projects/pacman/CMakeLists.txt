@@ -73,16 +73,32 @@ enable_testing()
 # ===================== CMOCKA ========================
 # =====================================================
 
-# System CMocka
 if (USE_SYSTEM_CMOCKA)
     find_package(CMocka QUIET)
 endif()
 
-if (TARGET CMocka::CMocka OR CMocka_FOUND)
-    message(STATUS "Using system CMocka")
+if (TARGET CMocka::CMocka)
+
+    message(STATUS "Using system CMocka (imported target)")
+    set(CMOCKA_LIB CMocka::CMocka)
+
+elseif (CMocka_FOUND)
+
+    message(STATUS "Using system CMocka (legacy variables)")
+    find_library(CMOCKA_LIBRARIES NAMES cmocka REQUIRED)
+    find_path(CMOCKA_INCLUDE_DIR NAMES cmocka.h REQUIRED)
+
+    add_library(cmocka_system INTERFACE)
+    target_include_directories(cmocka_system INTERFACE ${CMOCKA_INCLUDE_DIR})
+    target_link_libraries(cmocka_system INTERFACE ${CMOCKA_LIBRARIES})
+
+    add_library(CMocka::CMocka ALIAS cmocka_system)
+    set(CMOCKA_LIB CMocka::CMocka)
+
 elseif (EXISTS "${CMAKE_SOURCE_DIR}/libs/cmocka")
+
     message(STATUS "Using bundled CMocka at ${CMAKE_SOURCE_DIR}/libs/cmocka")
-    # Build a static library from the bundled CMocka source
+
     add_library(cmocka STATIC
             ${CMAKE_SOURCE_DIR}/libs/cmocka/src/cmocka.c
     )
@@ -92,14 +108,16 @@ elseif (EXISTS "${CMAKE_SOURCE_DIR}/libs/cmocka")
     )
 
     add_library(CMocka::CMocka ALIAS cmocka)
+    set(CMOCKA_LIB CMocka::CMocka)
 
 else()
-    message(FATAL_ERROR
-            "CMocka not found. Install libcmocka-dev or provide submodule libs/cmocka.\n"
-            "Set -DUSE_SYSTEM_CMOCKA=OFF to force use of bundled version."
-    )
-endif()
 
+    message(FATAL_ERROR
+            "CMocka not found. Install libcmocka-devel or provide submodule at libs/cmocka.\n"
+            "Set -DUSE_SYSTEM_CMOCKA=OFF to use the bundled version."
+    )
+
+endif()
 # =====================================================
 # ===================== Test Suite ====================
 # =====================================================
@@ -122,11 +140,7 @@ target_include_directories(test_suite PRIVATE
 )
 
 # Link CMocka
-if (TARGET CMocka::CMocka)
-    target_link_libraries(test_suite PRIVATE CMocka::CMocka)
-else()
-    message(FATAL_ERROR "CMocka target is missing despite successful detection")
-endif()
+target_link_libraries(test_suite PRIVATE ${CMOCKA_LIB})
 
 # Define compile-time flag for tests
 target_compile_definitions(test_suite PRIVATE PACMAN_TESTS)
