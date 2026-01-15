@@ -1,0 +1,24 @@
+= Exercice : Les structures
+
+. Structure de base pour représenter une personne
+* Déclarez une structure `+Person+` avec les champs suivants :
+** `+name+` (tableau de 50 caractères)
+** `+age+` (int)
+** `+size+` (float, pour la taille en mètres)
+* Créez une fonction `+printPerson+` qui prend une `+Person+` en paramètre et affiche ses informations.
+* Créez une fonction `+initPerson+` qui prend les valeurs pour le nom, l’âge et la taille, et initialise une `+Person+`.
+
+. Tableau de structures
+* Modifiez la structure `+Person+` pour ajouter un champ `+id+` (entier).
+* Créez un tableau de `+Person+` de taille 5 et initialisez chaque personne avec des valeurs distinctes.
+* Ecrivez une fonction `+findPersonByID+` qui prend un tableau de `+Person+`, sa taille et un `+id+` en paramètre, et retourne la personne correspondante (ou un message d’erreur si l'ID n'est pas trouvé).
+* Ecrivez un programme qui utilise cette fonction pour chercher et afficher une `+Person+` par son ID.
+
+. Structure imbriquée
+* Déclarez une structure `+Address+` avec les champs suivants :
+** `+street+` (chaîne de caractères dynamique terminée par un `+\0+`)
+** `+city+` (chaîne de caractères dynamique terminée par un `+\0+`)
+** `+postCode+` (int)
+* Modifiez la structure `+Person+` pour ajouter un champ `+address+` de type `+Address+`.
+* Créez une fonction `+printPersonComplete+` qui prend une `+Person+` en paramètre et affiche toutes les informations, y compris l’adresse.
+* Testez le tout dans le programme principal

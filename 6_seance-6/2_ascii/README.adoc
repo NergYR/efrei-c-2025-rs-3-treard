@@ -1,0 +1,5 @@
+= Exercice : ASCII
+
+. Écrire une fonction qui ne conserve que les lettres majuscule dans une chaine de caractères.
+
+. Écrire une fonction qui transforme toutes les lettres en majuscules
