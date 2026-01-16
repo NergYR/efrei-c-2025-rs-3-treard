@@ -130,7 +130,11 @@ target_include_directories(test_suite PRIVATE
 )
 
 # Link CMocka
-target_link_libraries(test_suite PRIVATE ${CMOCKA_LIB})
+if (TARGET CMocka::CMocka)
+    target_link_libraries(test_suite PRIVATE CMocka::CMocka)
+else()
+    message(FATAL_ERROR "CMocka target is missing despite successful detection")
+endif()
 
 # Define compile-time flag for tests
 target_compile_definitions(test_suite PRIVATE PACMAN_TESTS)

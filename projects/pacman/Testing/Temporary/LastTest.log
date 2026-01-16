@@ -1,0 +1,64 @@
+Start testing: Jan 16 09:42 Paris, Madrid
+----------------------------------------------------------
+1/1 Testing: pacman_tests
+1/1 Test: pacman_tests
+Command: "C:/Users/energ/OneDrive/Documents/INGE1/C/efrei-c-2025-rs-3-treard/projects/pacman/bin/test_suite.exe"
+Directory: C:/Users/energ/OneDrive/Documents/INGE1/C/efrei-c-2025-rs-3-treard/projects/pacman
+"pacman_tests" start time: Jan 16 09:42 Paris, Madrid
+Output:
+----------------------------------------------------------
+[==========] tests: Running 17 test(s).
+[ RUN      ] test_pacman_followUserKey
+[       OK ] test_pacman_followUserKey
+[ RUN      ] test_pacman_continueOnNeutral
+[       OK ] test_pacman_continueOnNeutral
+[ RUN      ] test_pacman_stopOnWall
+[       OK ] test_pacman_stopOnWall
+[ RUN      ] test_pacman_memorizeLastCommand
+[       OK ] test_pacman_memorizeLastCommand
+[ RUN      ] test_pacman_eatPacgum
+[       OK ] test_pacman_eatPacgum
+[ RUN      ] test_pacman_eatSuperPacgum_ghostsTurnBlue
+[       OK ] test_pacman_eatSuperPacgum_ghostsTurnBlue
+[ RUN      ] test_sprites_followDirection_left
+[       OK ] test_sprites_followDirection_left
+[ RUN      ] test_sprites_followDirection_down
+[       OK ] test_sprites_followDirection_down
+[ RUN      ] test_sprites_followDirection_right
+[       OK ] test_sprites_followDirection_right
+[ RUN      ] test_sprites_followDirection_up
+[  ERROR   ] --- dir == 'U'
+[   LINE   ] --- C:\Users\energ\OneDrive\Documents\INGE1\C\efrei-c-2025-rs-3-treard\projects\pacman\tests\test.c:518: error: Failure!
+[  FAILED  ] test_sprites_followDirection_up
+[ RUN      ] test_pacman_crossPath_endGame
+[  ERROR   ] --- 0x0 != 0x1
+[   LINE   ] --- C:\Users\energ\OneDrive\Documents\INGE1\C\efrei-c-2025-rs-3-treard\projects\pacman\tests\test.c:242: error: Failure!
+[  FAILED  ] test_pacman_crossPath_endGame
+[ RUN      ] test_pacman_encounterGhost_endGame
+[       OK ] test_pacman_encounterGhost_endGame
+[ RUN      ] test_ghosts_dontPassThroughWalls
+[       OK ] test_ghosts_dontPassThroughWalls
+[ RUN      ] test_ghosts_noUturn
+[       OK ] test_ghosts_noUturn
+[ RUN      ] test_pacmanAndGhosts_wraparound
+[       OK ] test_pacmanAndGhosts_wraparound
+[ RUN      ] test_pacman_eatLastPacgum_victory
+[       OK ] test_pacman_eatLastPacgum_victory
+[ RUN      ] test_quitOnEscape
+[       OK ] test_quitOnEscape
+[==========] tests: 17 test(s) run.
+[  PASSED  ] 15 test(s).
+[  FAILED  ] tests: 2 test(s), listed below:
+[  FAILED  ] test_sprites_followDirection_up
+[  FAILED  ] test_pacman_crossPath_endGame
+
+ 2 FAILED TEST(S)
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Failed.
+"pacman_tests" end time: Jan 16 09:42 Paris, Madrid
+"pacman_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 16 09:42 Paris, Madrid
