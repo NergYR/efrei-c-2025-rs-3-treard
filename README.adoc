@@ -19,7 +19,298 @@ Objectifs RS : Ouverture sur la sécurité
 . Histoire du C + Compilation + boucles + programmation modulaire
 . Pointeurs
 . Structures de données
-. Gestion de la mémoire avancée + récursivité
+. Gestion de la mémoire avancée
 
 == Objectifs operationels
 Déclinaison pratique des objectifs, ce sont les compétences que vous devez acquérir après chaque séance.
+
+
+== Développement logiciel en C – Fiche récapitulative
+
+== Types de base
+
+[cols="1,3,1",options="header"]
+|===
+|Type |Description |Format printf
+|`int` |Entier |`%d`
+|`long` |Entier plus grand |
+|`char` |Caractère (ASCII, 1 octet) |`%c`
+|`bool` |Booléen (`true` / `false`) |
+|`float` |Nombre à virgule flottante |`%f`
+|`double` |Nombre à virgule flottante (précision supérieure) |
+|===
+
+[source,c]
+....
+char aLetter = 'A';
+....
+
+Chaîne de caractères : tableau de `char` (terminé par `\0`)
+
+[source,c]
+....
+char name[] = "Alice"; // printf avec %s
+....
+
+== Opérateurs
+
+=== Arithmétiques
+
+[source,c]
+....
+a = a + b;
+a += b;
+a++;
+% // modulo (reste de la division euclidienne)
+....
+
+=== Comparaison
+
+[source,c]
+....
+==  // égalité
+!=  // différent
+< <= // inférieur / inférieur ou égal
+
+> > = // supérieur / supérieur ou égal
+....
+
+=== Logiques
+
+[source,c]
+....
+
+!  // non logique
+&& // et logique
+|| // ou logique (inclusif)
+....
+
+== Conditions
+
+[source,c]
+....
+
+if (condition)
+{
+}
+else if (condition)
+{
+}
+else
+{
+}
+....
+
+[source,c]
+....
+int x = 3;
+switch (x)
+{
+    case 1:
+        // ...
+        break;
+    case 2:
+        // ...
+        break;
+    default:
+        // ...
+        break;
+}
+....
+
+== Boucles
+
+[source,c]
+....
+
+for (int i = 0; i < size; i++)
+{
+
+}
+
+....
+[source,c]
+....
+
+while (condition)
+{
+}
+....
+
+[source,c]
+....
+
+do
+{
+} while (condition);
+....
+== Fonctions
+
+Déclaration / définition :
+
+[source,c]
+....
+
+int doSomething(bool exist, char x)
+{
+    return 0; // même type que la fonction
+}
+....
+
+* Une fonction *doit* retourner une valeur si son type n’est pas `void`
+* Les paramètres et variables locales ne sont visibles que dans la fonction
+
+== Fichiers
+
+=== .h
+
+* Déclarations des fonctions
+* Déclarations des structures, enums, constantes
+
+=== .c
+
+* Définitions des fonctions (implémentation)
+
+== Compilation
+
+La compilation est un *processus en plusieurs étapes* qui transforme le code C en programme exécutable :
+
+* Prétraitement
+* Compilation
+* Édition de liens
+
+== IDE et Debug
+
+* *IDE* : environnement de développement (éditeur, compilation, débogage, intégration d’outils)
+* *Debugger* : exécution pas à pas, inspection des variables, analyse des bugs
+
+== Pointeurs
+
+[source,c]
+....
+
+int toto = 10;        // variable
+int *ptr;             // pointeur
+ptr = &toto;          // adresse de toto
+*ptr = 20;            // déréférencement
+....
+
+Un pointeur est une variable qui contient *l’adresse mémoire* d’une autre variable.
+
+== Tableaux
+
+=== Tableaux statiques
+
+[source,c]
+....
+
+int array[10];
+int array2[] = {1, 2, 3, 4};
+....
+
+=== Tableaux dynamiques
+
+[source,c]
+....
+
+int size = 10;
+int *array = malloc(sizeof(int) * size);
+free(array);
+....
+
+* `malloc` : alloue de la mémoire
+* `sizeof` : taille en octets d’un type
+* `free` : libère la mémoire (une fois par `malloc`)
+
+
+Passage de tableau en paramètre :
+
+[source,c]
+....
+void printArray(int *array);
+....
+
+== Tableaux 2D dynamiques
+
+[source,c]
+....
+int **array2D = malloc(sizeof(int*) * 4);
+for (int i = 0; i < 4; i++)
+{
+    array2D[i] = malloc(sizeof(int) * 3);
+}
+
+array2D[2][1]; // accéder à un élément
+
+for (int i = 0; i < 4; i++)
+{
+    free(array2D[i]); // on libère d'abord l'intérieur
+}
+free(array2D);
+....
+
+== Structures et énumérations
+
+=== enum
+
+* Énumération de valeurs entières
+* Améliore la lisibilité du code
+
+[source,c]
+....
+enum Weather { SUN, RAIN, SNOW };
+....
+=== struct
+
+[source,c]
+....
+
+struct Person {
+char name[20];
+int age;
+};
+....
+
+Utilisation :
+
+[source,c]
+....
+
+struct Person p;
+p.age = 30;
+
+struct Person *ptr = &p;
+ptr->age = 31;
+....
+
+Sous-structures :
+
+[source,c]
+....
+person.car.model;
+....
+Tableau dynamique de structures :
+
+[source,c]
+....
+struct Person *persons = malloc(sizeof(struct Person) * 5);
+persons[3].age;
+....
+
+== Git (gestion de versions)
+
+Git est un *outil de gestion de versions distribué* :
+
+* Tout le dépôt existe sur chaque machine
+* Le changement de branche est plus rapide et possible déconnecté du serveur
+* Facilite le travail collaboratif
+
+Commandes principales :
+
+* `commit` : enregistre des modifications (hash unique)
+* `push` : envoie les commits vers le serveur
+* `fetch` : récupère les informations distantes sans modifier les fichiers locaux
+* `merge` : fusionne deux branches
+* `pull` : `fetch` + `merge`
+
+*GitLab* fournit un serveur Git et des services associés (CI, issues, etc.).
