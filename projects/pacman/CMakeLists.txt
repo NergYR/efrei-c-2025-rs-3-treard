@@ -19,6 +19,9 @@ set(
         src/main.c
         src/framework.c
         src/firstLevel.c
+        src/entities.c
+        src/ghosts.c
+        src/game.c
 )
 
 set(
@@ -26,6 +29,9 @@ set(
         src/main.h
         src/framework.h
         src/firstLevel.h
+        src/entities.h
+        src/ghosts.h
+        src/game.h
 )
 
 add_executable(pacman ${SRCS} ${HEADER})
@@ -121,6 +127,9 @@ set(TEST_SOURCES
 add_executable(test_suite
         ${TEST_SOURCES}
         src/main.c
+        src/entities.c
+        src/ghosts.c
+        src/game.c
 )
 
 target_include_directories(test_suite PRIVATE

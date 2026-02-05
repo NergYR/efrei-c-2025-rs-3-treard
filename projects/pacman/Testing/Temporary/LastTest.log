@@ -1,10 +1,10 @@
-Start testing: Jan 16 09:42 Paris, Madrid
+Start testing: Feb 05 14:09 Paris, Madrid
 ----------------------------------------------------------
 1/1 Testing: pacman_tests
 1/1 Test: pacman_tests
 Command: "C:/Users/energ/OneDrive/Documents/INGE1/C/efrei-c-2025-rs-3-treard/projects/pacman/bin/test_suite.exe"
 Directory: C:/Users/energ/OneDrive/Documents/INGE1/C/efrei-c-2025-rs-3-treard/projects/pacman
-"pacman_tests" start time: Jan 16 09:42 Paris, Madrid
+"pacman_tests" start time: Feb 05 14:09 Paris, Madrid
 Output:
 ----------------------------------------------------------
 [==========] tests: Running 17 test(s).
@@ -27,13 +27,9 @@ Output:
 [ RUN      ] test_sprites_followDirection_right
 [       OK ] test_sprites_followDirection_right
 [ RUN      ] test_sprites_followDirection_up
-[  ERROR   ] --- dir == 'U'
-[   LINE   ] --- C:\Users\energ\OneDrive\Documents\INGE1\C\efrei-c-2025-rs-3-treard\projects\pacman\tests\test.c:518: error: Failure!
-[  FAILED  ] test_sprites_followDirection_up
+[       OK ] test_sprites_followDirection_up
 [ RUN      ] test_pacman_crossPath_endGame
-[  ERROR   ] --- 0x0 != 0x1
-[   LINE   ] --- C:\Users\energ\OneDrive\Documents\INGE1\C\efrei-c-2025-rs-3-treard\projects\pacman\tests\test.c:242: error: Failure!
-[  FAILED  ] test_pacman_crossPath_endGame
+[       OK ] test_pacman_crossPath_endGame
 [ RUN      ] test_pacman_encounterGhost_endGame
 [       OK ] test_pacman_encounterGhost_endGame
 [ RUN      ] test_ghosts_dontPassThroughWalls
@@ -47,18 +43,13 @@ Output:
 [ RUN      ] test_quitOnEscape
 [       OK ] test_quitOnEscape
 [==========] tests: 17 test(s) run.
-[  PASSED  ] 15 test(s).
-[  FAILED  ] tests: 2 test(s), listed below:
-[  FAILED  ] test_sprites_followDirection_up
-[  FAILED  ] test_pacman_crossPath_endGame
-
- 2 FAILED TEST(S)
+[  PASSED  ] 17 test(s).
 <end of output>
-Test time =   0.05 sec
+Test time =   0.08 sec
 ----------------------------------------------------------
-Test Failed.
-"pacman_tests" end time: Jan 16 09:42 Paris, Madrid
+Test Passed.
+"pacman_tests" end time: Feb 05 14:09 Paris, Madrid
 "pacman_tests" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Jan 16 09:42 Paris, Madrid
+End testing: Feb 05 14:09 Paris, Madrid

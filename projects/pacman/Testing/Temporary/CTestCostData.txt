@@ -1,3 +1,2 @@
-pacman_tests 0 0
+pacman_tests 1 0.0819046
 ---
-pacman_tests
