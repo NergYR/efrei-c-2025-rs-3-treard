@@ -1,13 +1,17 @@
 #include "main.h"
+#include "correction.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
 
-
 int main(void)
 {
+
+  correction();
+
+
   // Sans le typedef, la structure devrait etre utilise comme suit :
   // struct Book cthulhu;
   Book cthulhu;
